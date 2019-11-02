@@ -31,26 +31,26 @@ class MainActivity : BaseActivity() {
 
     private lateinit var viewModel:MainViewModel
 
-    private lateinit var recyclerView: RecyclerView
+   private lateinit var recyclerView: RecyclerView
 
-    private lateinit var adapter: DataAdapter
+   // private lateinit var adapter: DataAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.vicky.apps.datapoints.R.layout.activity_main)
-        inilializingRecyclerView()
+    //    inilializingRecyclerView()
         initializeValues()
 
     }
 
     private fun inilializingRecyclerView() {
 
-        recyclerView.layoutManager = GridLayoutManager(this, 3)
+        /*recyclerView.layoutManager = GridLayoutManager(this, 3)
 
 
         adapter = DataAdapter()
 
-        recyclerView.adapter = adapter
+        recyclerView.adapter = adapter*/
     }
 
     private fun initializeValues() {
@@ -80,7 +80,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun updateData(){
-        adapter.updateData()
+      //  adapter.updateData()
     }
 
 
