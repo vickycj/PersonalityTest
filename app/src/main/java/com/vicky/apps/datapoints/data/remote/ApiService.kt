@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 
 interface ApiService {
-    @GET("")
+    @GET("/sparknetworks/coding_exercises_options/master/personality_test/database/personality_test.json")
     fun getDataFromService(): Single<List<Any>>
 }
