@@ -5,11 +5,11 @@ import com.google.gson.annotations.SerializedName
 
 data class QuestionType(
     @SerializedName("range")
-    var range: Range = Range(),
+    var range: Range?,
     @SerializedName("condition")
-    var condition: Condition = Condition(),
+    var condition: Condition?,
     @SerializedName("options")
-    var options: List<String> = listOf(),
+    var options: List<String?>?,
     @SerializedName("type")
-    var type: String = ""
+    var type: String?
 )

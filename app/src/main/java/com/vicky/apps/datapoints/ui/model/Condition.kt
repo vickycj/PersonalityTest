@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Condition(
     @SerializedName("if_positive")
-    var ifPositive: IfPositive = IfPositive(),
+    var ifPositive: IfPositive?,
     @SerializedName("predicate")
-    var predicate: Predicate = Predicate()
+    var predicate: Predicate?
 )
