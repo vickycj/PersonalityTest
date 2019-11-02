@@ -20,6 +20,9 @@ import android.text.TextUtils
 import android.view.MenuItem
 import android.widget.SearchView
 import com.vicky.apps.datapoints.base.AppConstants
+import com.vicky.apps.datapoints.components.QuestionCard
+import com.vicky.apps.datapoints.components.model.OptionsData
+import com.vicky.apps.datapoints.components.model.QuestionCardData
 
 
 class MainActivity : BaseActivity() {
@@ -40,6 +43,20 @@ class MainActivity : BaseActivity() {
         setContentView(com.vicky.apps.datapoints.R.layout.activity_main)
     //    inilializingRecyclerView()
         initializeValues()
+
+
+        val questionCardData = QuestionCardData("What is your pet name?",1,listOf(
+            OptionsData("Cat",false),
+            OptionsData("Dog",false),
+            OptionsData("Cow",false)))
+
+        val questionCard = QuestionCard(this)
+        questionCard.setQuestion(questionCardData)
+        questionCardViewParent.addView(questionCard)
+
+
+
+
 
     }
 
