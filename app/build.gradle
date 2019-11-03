@@ -27,6 +27,12 @@ android {
     packagingOptions {
         exclude 'META-INF/atomicfu.kotlin_module'
     }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 
@@ -109,4 +115,5 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-inline:2.11.0'
+    testImplementation 'org.robolectric:robolectric:4.3'
 }

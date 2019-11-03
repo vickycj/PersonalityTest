@@ -1,4 +1,5 @@
 package com.vicky.apps.datapoints.ui.view
+
 import android.os.Bundle
 
 import android.widget.Toast
@@ -21,21 +22,15 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 
 
-
-
-
-
-
 class MainActivity : BaseActivity() {
-
 
 
     @Inject
     lateinit var factory: ViewModelProviderFactory
 
-    private lateinit var viewModel:MainViewModel
+    private lateinit var viewModel: MainViewModel
 
-   private lateinit var recyclerView: RecyclerView
+    private lateinit var recyclerView: RecyclerView
 
     private lateinit var adapter: DataAdapter
 
@@ -53,7 +48,8 @@ class MainActivity : BaseActivity() {
 
         recyclerView = questionCardRecyclerView
 
-        recyclerView.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         adapter = DataAdapter(ArrayList())
 
@@ -67,9 +63,9 @@ class MainActivity : BaseActivity() {
         viewModel.setCompositeData(compositeDisposable)
 
         viewModel.getSubscription().observe(this, Observer {
-            if(it){
+            if (it) {
                 successCallback()
-            }else{
+            } else {
                 failureCallback()
             }
         })
@@ -77,10 +73,10 @@ class MainActivity : BaseActivity() {
 
         chipGroupText.setOnCheckedChangeListener(ChipGroup.OnCheckedChangeListener { chipGroup, i ->
             val chip = chipGroup.findViewById<Chip>(i)
-            if (chip != null){
+            if (chip != null) {
                 viewModel.filterData(chip.tag.toString())
                 updateData()
-            }else{
+            } else {
                 viewModel.resetFilter()
                 updateData()
             }
@@ -89,22 +85,18 @@ class MainActivity : BaseActivity() {
     }
 
 
-    private fun successCallback(){
+    private fun successCallback() {
         updateData()
     }
 
-    private fun updateData(){
+    private fun updateData() {
         adapter.updateData(viewModel.getDataList())
     }
 
 
-    private fun failureCallback(){
-        Toast.makeText(this,"API failed",Toast.LENGTH_LONG).show()
+    private fun failureCallback() {
+        Toast.makeText(this, "API failed", Toast.LENGTH_LONG).show()
     }
-
-
-
-
 
 
 }
