@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">AlbumList</string>
+    <string name="app_name">PersonalityTrait</string>
+    <string name="hard_fact">Hard Fact</string>
+    <string name="life_style">Life Style</string>
+    <string name="passion">Passion</string>
 </resources>
