@@ -11,6 +11,7 @@ import com.vicky.apps.datapoints.ui.model.QuestionTypeResponse
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
+import java.util.Locale.filter
 
 
 class MainViewModel(
@@ -18,6 +19,8 @@ class MainViewModel(
     private val schedulerProvider: SchedulerProvider
 ) : ViewModel() {
 
+
+    private var mainList:MutableList<QuestionCardData> = ArrayList()
 
     private var questionsList: MutableList<QuestionCardData> = ArrayList()
 
@@ -63,6 +66,8 @@ class MainViewModel(
                 )
             )
         }
+
+        mainList = questionsList
         response.postValue(true)
 
     }
@@ -70,6 +75,16 @@ class MainViewModel(
     fun generateApiCall(): Single<QuestionTypeResponse> {
         return repository.getDataFromApi()
             .compose(schedulerProvider.getSchedulersForSingle())
+    }
+
+    fun filterData(tag: String?) {
+        questionsList = mainList.filter {
+            it.category == tag
+        }.toMutableList()
+    }
+
+    fun resetFilter() {
+        questionsList = mainList.toMutableList()
     }
 
 
