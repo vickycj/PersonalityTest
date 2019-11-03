@@ -1,6 +1,5 @@
 package com.vicky.apps.datapoints.ui.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.vicky.apps.datapoints.common.SchedulerProvider
@@ -53,7 +52,7 @@ class MainViewModel(
         questionTypeResponse.questions?.forEach {
             val options: MutableList<OptionsData> = ArrayList()
             it?.questionType?.options?.forEach { name ->
-                options.add(OptionsData(name!!, false))
+                options.add(OptionsData(name!!.capitalize(), false))
             }
             questionsList.add(
                 QuestionCardData(

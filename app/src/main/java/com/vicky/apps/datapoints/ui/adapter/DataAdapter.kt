@@ -1,7 +1,6 @@
 package com.vicky.apps.datapoints.ui.adapter
 
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,11 +11,15 @@ import com.vicky.apps.datapoints.components.QuestionCard
 import com.vicky.apps.datapoints.components.model.QuestionCardData
 
 
+
+
 class DataAdapter constructor(var data:List<QuestionCardData>) : RecyclerView.Adapter<DataAdapter.DataViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.recycler_child_view,parent,false)
+        val height = parent.measuredHeight /2
+        v.minimumHeight = height
         return DataViewHolder(v)
     }
 
