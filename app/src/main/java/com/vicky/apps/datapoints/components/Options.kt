@@ -19,6 +19,10 @@ class Options(context:Context,optionsData: List<OptionsData>): LinearLayout(cont
 
     private val adapter: OptionsAdapter
 
+    companion object {
+        final val SINGLE_CHOICE = 1
+    }
+
     constructor(context: Context,attributeSet: AttributeSet):this(context, listOf(OptionsData("",false)))
     constructor(context: Context):this(context, listOf(OptionsData("",false)))
 

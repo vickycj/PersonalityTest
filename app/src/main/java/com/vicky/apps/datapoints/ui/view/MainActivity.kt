@@ -19,6 +19,7 @@ import android.content.Intent
 import android.text.TextUtils
 import android.view.MenuItem
 import android.widget.SearchView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.vicky.apps.datapoints.base.AppConstants
 import com.vicky.apps.datapoints.components.QuestionCard
 import com.vicky.apps.datapoints.components.model.OptionsData
@@ -36,38 +37,27 @@ class MainActivity : BaseActivity() {
 
    private lateinit var recyclerView: RecyclerView
 
-   // private lateinit var adapter: DataAdapter
+    private lateinit var adapter: DataAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.vicky.apps.datapoints.R.layout.activity_main)
-    //    inilializingRecyclerView()
+        inilializingRecyclerView()
         initializeValues()
 
 
-        val questionCardData = QuestionCardData("What is your pet name?",1,listOf(
-            OptionsData("Cat",false),
-            OptionsData("Dog",false),
-            OptionsData("Cow",false)))
-
-        val questionCard = QuestionCard(this)
-        questionCard.setQuestion(questionCardData)
-        questionCardViewParent.addView(questionCard)
-
-
-
-
-
+        viewModel.getDataFromRemote()
     }
 
     private fun inilializingRecyclerView() {
 
-        /*recyclerView.layoutManager = GridLayoutManager(this, 3)
+        recyclerView = questionCardRecyclerView
 
+        recyclerView.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false)
 
-        adapter = DataAdapter()
+        adapter = DataAdapter(ArrayList())
 
-        recyclerView.adapter = adapter*/
+        recyclerView.adapter = adapter
     }
 
     private fun initializeValues() {
@@ -84,20 +74,15 @@ class MainActivity : BaseActivity() {
             }
         })
 
-
-
-        viewModel.getDataFromRemote()
     }
 
-    private fun sortAndUpdateData() {
-        updateData()
-    }
+
     private fun successCallback(){
         updateData()
     }
 
     private fun updateData(){
-      //  adapter.updateData()
+        adapter.updateData(viewModel.getDataList())
     }
 
 
