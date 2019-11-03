@@ -7,4 +7,5 @@
     <color name="colorDark">#001970</color>
     <color name="colorLight">#666ad1</color>
     <color name="textColor">#ffffff</color>
+    <color name="light_blue">#00d2ff</color>
 </resources>
