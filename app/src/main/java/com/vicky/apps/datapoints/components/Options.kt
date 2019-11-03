@@ -29,6 +29,10 @@ class Options(context:Context,optionsData: List<OptionsData>): LinearLayout(cont
 
         recyclerView.layoutManager = LinearLayoutManager(context)
 
+        recyclerView.isNestedScrollingEnabled = false
+
+        recyclerView.overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+
         adapter = OptionsAdapter(optionsData)
 
         recyclerView.adapter = adapter

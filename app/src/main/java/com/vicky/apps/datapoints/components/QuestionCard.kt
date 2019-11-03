@@ -19,6 +19,8 @@ class QuestionCard(context: Context): CardView(context) {
 
     init {
         itemView.optionsViewParent.addView(options)
+        this.radius = 2.0f
+        this.cardElevation = 5.0f
     }
 
     fun setQuestion(questionCardData: QuestionCardData){
